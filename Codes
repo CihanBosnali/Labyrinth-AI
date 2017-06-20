@@ -1,0 +1,112 @@
+
+var been = [[1,1,1,1,1,1,1,1,-1,1],
+            [1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1]]
+
+// 0 - Barrier
+// 1 - Road
+// -1 - Finish
+
+var labyrinth = [[0,0,0,0,0,0,0,0,-1,0],
+                 [0,1,0,0,1,1,1,1,1,0],
+                 [0,1,0,1,1,0,0,0,0,0],
+                 [0,1,0,0,1,0,1,1,1,0],
+                 [0,1,1,1,1,1,1,0,1,0],
+                 [0,1,0,0,0,0,0,0,0,0],
+                 [0,1,0,1,1,1,1,1,1,0],
+                 [0,1,0,0,1,0,0,0,1,0],
+                 [0,1,1,1,1,0,1,1,1,0],
+                 [0,0,0,0,0,0,0,0,1,0]]
+
+var x = 8
+var y = 9
+var z = 1
+
+print("Tesla Car Starts To Journey From : Coordinate :  \(x),\(y)")
+
+for i in 0...1000{
+    
+    if (labyrinth[y][x]==(-1)){
+        print("You arrived to designated location. Thanks for using Tesla. -Artifical Intelligence")
+        break
+    }
+    
+    if (y>0){
+        if (been[y - 1][x] < z && labyrinth[y - 1][x] != 0){
+            z = been[y - 1][x]
+            continue
+        }
+
+    }
+    
+    if (x<9){
+        if (been[y][x+1]<z && labyrinth[y][x+1] != 0){
+            z = been[y][x+1]
+            continue
+        }
+
+    }
+    
+    if (x>0){
+        if (been[y][x-1]<z && labyrinth[y][x-1] != 0){
+            z = been[y][x-1]
+            continue
+        }
+
+    }
+
+    if (y<9){
+        if (been[y + 1][x] < z && labyrinth[y + 1][x] != 0){
+            z = been[y + 1][x]
+            continue
+        }
+    }
+    if (y>0){
+        if (labyrinth[y - 1][x]<=1 && been[y - 1][x]==z) && labyrinth[y - 1][x] != 0{
+            been[y][x] += 1
+            y = y - 1
+            print("coordinate : \(x),\(y)")
+            continue
+        }
+    }
+        
+    if (x<9){
+        if (labyrinth[y][x+1]<=1 && been[y][x+1]==z) && labyrinth[y][x+1] != 0{
+            been[y][x] += 1
+            x = x+1
+            print("coordinate : \(x),\(y)")
+            continue
+        }
+    }
+    
+    if (x>0){
+        if (labyrinth[y][x-1]<=1 && been[y][x-1]==z) && labyrinth[y][x-1] != 0{
+            been[y][x] += 1
+            x = x-1
+            print("coordinate : \(x),\(y)")
+            continue
+        }
+    }
+    
+    if (y<9){
+
+        if (labyrinth[y+1][x]<=1 && been[y+1][x]==z) && labyrinth[y + 1][x] != 0{
+            been[y][x] += 1
+            y = y+1
+            print("coordinate : \(x),\(y)")
+            continue
+        }
+
+    }
+    if (been[y][x] == z){
+        z = 100
+    }
+}
+print("Goodbye for now...")
