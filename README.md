@@ -1,4 +1,4 @@
-# Labyrinth-AI
+# Labyrinth-Solver
 A program to solve 0-1 labyrinths.
 
 barriers are 0.
